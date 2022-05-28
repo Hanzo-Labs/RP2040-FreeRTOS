@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(rpi2040_autosar)
+# Set project data
+set(PROJECT_NAME "RP2040_FREERTOS_PROJECT")
+set(BUILD_NUMBER "1")
 
 # Set app-side debugging ON or OFF
 set(DO_DEBUG "ON")

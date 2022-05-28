@@ -21,10 +21,12 @@ add_executable(Hanzo_Autosar main.c)
 target_link_libraries(Hanzo_Autosar LINK_PUBLIC
     pico_stdlib
     FreeRTOS
-    autosar_classic)
+    autosar_classic
+    rpi2040)
 
 include_directories(../autosar_classic/src/
-                    ../autosar_classic/src/Det/)
+                    ../autosar_classic/src/Det/
+                    ../autosar_classic/bsp/rpi2040/)
 
 # Enable/disable STDIO via USB and UART
 pico_enable_stdio_usb(Hanzo_Autosar 1)

@@ -7,6 +7,7 @@
  */
 
 #include "main.h"
+#include <rpi2040.h>
 #include <Det.h>
 
 
@@ -37,7 +38,7 @@ void led_task_pico(void* unused_arg)
     }
 }
 
-void autosar_task(void *data)
+static void autosar_task(void *data)
 {
     int count = 0;
     Det_Init(NULL);
@@ -49,12 +50,33 @@ void autosar_task(void *data)
     }
 }
 
+static void display_system_info()
+{
+    struct sysinfo info;
+
+    sysinfo_get(&info);
+
+    printf("chip revision %d part %d manufacturer %d\n",
+                info.ch_id.revision,
+                info.ch_id.part,
+                info.ch_id.manufacturer);
+    printf("asic %s fpga %s\n",
+                info.p_reg.asic ? "Yes": "No",
+                info.p_reg.fpga ? "Yes": "No");
+    printf("chip version %d\n",
+                info.chip_version);
+}
+
 /*
  * RUNTIME START
  */
 int main()
 {
     stdio_usb_init();
+
+    sleep_ms(2000);
+
+    display_system_info();
 
     // init LEDs for debugging
     BaseType_t pico_status = xTaskCreate(led_task_pico,

@@ -34,8 +34,6 @@ extern "C" {
  * PROTOTYPES
  */
 void led_task_pico(void* unused_arg);
-void log_debug(const char* msg);
-void log_device_info(void);
 
 
 #ifdef __cplusplus

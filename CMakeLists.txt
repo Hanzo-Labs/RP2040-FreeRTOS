@@ -8,16 +8,8 @@ set(BUILD_NUMBER "1")
 set(APP_1_NAME "TEMPLATE")
 set(APP_1_VERSION_NUMBER "1.2.0")
 
-set(APP_2_NAME "SCHEDULING_DEMO")
-set(APP_2_VERSION_NUMBER "1.2.0")
-
-set(APP_3_NAME "IRQS_DEMO")
-set(APP_3_VERSION_NUMBER "1.2.0")
-
 # Specify the app(s) source code
-set(APP_1_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/App-Template")
-set(APP_2_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/App-Scheduling")
-set(APP_3_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/App-IRQs")
+set(APP_1_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/example_code/App-Template")
 
 # Set app-side debugging ON or OFF
 set(DO_DEBUG "ON")
@@ -66,10 +58,10 @@ target_include_directories(FreeRTOS PUBLIC
 
 # Include the apps' source code
 add_subdirectory(${APP_1_SRC_DIRECTORY})
-add_subdirectory(${APP_2_SRC_DIRECTORY})
-add_subdirectory(${APP_3_SRC_DIRECTORY})
 
 # Clean up
 unset(FREERTOS_CFG_DIRECTORY)
 unset(FREERTOS_SRC_DIRECTORY)
 unset(APP_SRC_DIRECTORY)
+
+

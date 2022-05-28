@@ -1,15 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-# Set project data
-set(PROJECT_NAME "RP2040_FREERTOS_PROJECT")
-set(BUILD_NUMBER "1")
-
-# Set app name(s) and version(s)
-set(APP_1_NAME "TEMPLATE")
-set(APP_1_VERSION_NUMBER "1.2.0")
-
-# Specify the app(s) source code
-set(APP_1_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/example_code/App-Template")
+project(rpi2040_autosar)
 
 # Set app-side debugging ON or OFF
 set(DO_DEBUG "ON")
@@ -31,7 +22,7 @@ include(pico_sdk_import.cmake)
 # Name the project
 project(${PROJECT_NAME}
         LANGUAGES C CXX ASM
-        DESCRIPTION "FreeRTOS-based RP2040 applications"
+        DESCRIPTION "RP2040 AutoSAR with FreeRTOS kernel"
 )
 
 # Initialise the Pico SDK
@@ -56,8 +47,8 @@ target_include_directories(FreeRTOS PUBLIC
     ${FREERTOS_SRC_DIRECTORY}/portable/GCC/ARM_CM0
 )
 
-# Include the apps' source code
-add_subdirectory(${APP_1_SRC_DIRECTORY})
+add_subdirectory(autosar_classic)
+add_subdirectory(autosar_target)
 
 # Clean up
 unset(FREERTOS_CFG_DIRECTORY)
